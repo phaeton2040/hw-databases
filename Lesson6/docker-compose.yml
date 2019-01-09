@@ -1,0 +1,25 @@
+version: '3'
+services:
+  mysql_master:
+    build:
+      context: ./master
+    container_name: "mysql_master"
+    restart: "no"
+    ports:
+      - 3306:3306
+    volumes:
+      - ./master/data:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=123456
+      - MYSQL_DATABASE=company
+  mysql_slave:
+    image: mysql:latest
+    container_name: "mysql_slave"
+    restart: "no"
+    ports:
+      - 3307:3306
+    volumes:
+      - ./slave/data:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=123456
+      - MYSQL_DATABASE=company

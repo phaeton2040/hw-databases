@@ -1,0 +1,5 @@
+[mysqld]
+server-id=2
+relay-log = /var/lib/mysql/relay01.log
+log_bin = bin-repl.log
+binlog_do_db = company

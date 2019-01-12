@@ -13,7 +13,8 @@ services:
       - MYSQL_ROOT_PASSWORD=123456
       - MYSQL_DATABASE=company
   mysql_slave:
-    image: mysql:latest
+    build:
+      context: ./slave
     container_name: "mysql_slave"
     restart: "no"
     ports:
